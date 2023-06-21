@@ -15,6 +15,10 @@ public class PlayerController : MonoBehaviour
     private GameObject bullet;
     [SerializeField]
     private AudioSource shootingSound;
+    [SerializeField]
+    private ObjectPool objectPool;
+    [SerializeField]
+    private Transform Sotingtransfom;
 
     private float rotation;
     // Start is called before the first frame update
@@ -47,10 +51,15 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+
     }
     private void Shoot()
     {
-        GameObject cloneBullet = Instantiate(bullet, point.position, point.rotation);
+        GameObject cloneBullet = objectPool.GetPoolObject();
+        cloneBullet.transform.position = Sotingtransfom.position;
+        cloneBullet.transform.rotation = gun.transform.rotation;
+        cloneBullet.SetActive(true);
+        //GameObject cloneBullet = Instantiate(bullet, point.position, point.rotation);
         shootingSound.Play();
     }
 }

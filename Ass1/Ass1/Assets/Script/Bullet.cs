@@ -26,20 +26,22 @@ public class Bullet : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         transform.position += transform.up * speed * Time.deltaTime;
-        if (transform.position.x - margin > screenBound.x || transform.position.x + margin < -screenBound.x)
+        if (transform.position.x - margin > screenBound.x || transform.position.x + margin < - screenBound.x)
         {
-            Destroy(gameObject);
+            //destroy(gameobject);
+            gameObject.SetActive(false);
         }
-        if (transform.position.y - margin > screenBound.y || transform.position.y + margin < -screenBound.y)
+        if (transform.position.y - margin > screenBound.y || transform.position.y + margin < - screenBound.y)
         {
-            Destroy(gameObject);
+            //destroy(gameobject);
+            gameObject.SetActive(false);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -47,6 +49,7 @@ public class Bullet : MonoBehaviour
         GameManager.instance.AddScore();
         Instantiate(animation, transform.position, transform.rotation);
         Destroy(collision.gameObject);
-        Destroy(gameObject);
+        //destroy(gameobject);
+        gameObject.SetActive(false);
     }
 }

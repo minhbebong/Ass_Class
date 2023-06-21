@@ -47,6 +47,6 @@ public class GameManager : MonoBehaviour
     private void Spawn()
     {
         GameObject cloneEnemy = Instantiate
-            (enemy, new Vector2(Random.Range(transform.position.x-5f,transform.position.x+5f),transform.position.y),  transform.rotation);
+            (enemy, new Vector2(Random.Range(transform.position.x - 5f, transform.position.x + 5f), transform.position.y), transform.rotation);
     }
 }
